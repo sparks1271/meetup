@@ -23,13 +23,13 @@ const topicsList = [
   },
 ]
 
-const Register = () => (
+const Register = props => (
   <LanguageContext.Consumer>
     {value => {
-      const {name, changeName, changeSelectOption, activeOption} = value
+      const {name, onChangeName, changeSelectOption, activeOption} = value
 
-      const onChangeName = event => {
-        changeName(event.target.value)
+      const ChangeName = event => {
+        onChangeName(event.target.value)
       }
 
       const onChangeOption = event => {
@@ -38,7 +38,7 @@ const Register = () => (
 
       const onClickRegister = event => {
         event.preventDefault()
-        const {history} = this.props
+        const {history} = props
 
         history.push('/')
       }
@@ -55,12 +55,7 @@ const Register = () => (
             <h1>Let us Join</h1>
             <form onSubmit={onClickRegister}>
               <label htmlFor="name">NAME</label>
-              <input
-                id="name"
-                type="text"
-                onChange={onChangeName}
-                value={name}
-              />
+              <input id="name" type="text" onChange={ChangeName} value={name} />
               <label htmlFor="option">TOPICS</label>
               <select
                 id="option"
@@ -72,7 +67,7 @@ const Register = () => (
                 ))}
               </select>
               <button type="submit">Register</button>
-              {name.length === 0 && <p>"Please enter your name</p>}
+              {name.length === 0 && <p>Please enter your name</p>}
             </form>
           </div>
         </div>

@@ -4,29 +4,30 @@ import LanguageContext from './Context/languageContext'
 import Home from './components/Home'
 import Register from './components/Register'
 import Header from './components/Header'
+import NotFound from './components/NotFound'
 
-const topicsList = [
-  {
-    id: 'ARTS_AND_CULTURE',
-    displayText: 'Arts and Culture',
-  },
-  {
-    id: 'CAREER_AND_BUSINESS',
-    displayText: 'Career and Business',
-  },
-  {
-    id: 'EDUCATION_AND_LEARNING',
-    displayText: 'Education and Learning',
-  },
-  {
-    id: 'FASHION_AND_BEAUTY',
-    displayText: 'Fashion and Learning',
-  },
-  {
-    id: 'GAMES',
-    displayText: 'Games',
-  },
-]
+// const topicsList = [
+//   {
+//     id: 'ARTS_AND_CULTURE',
+//     displayText: 'Arts and Culture',
+//   },
+//   {
+//     id: 'CAREER_AND_BUSINESS',
+//     displayText: 'Career and Business',
+//   },
+//   {
+//     id: 'EDUCATION_AND_LEARNING',
+//     displayText: 'Education and Learning',
+//   },
+//   {
+//     id: 'FASHION_AND_BEAUTY',
+//     displayText: 'Fashion and Learning',
+//   },
+//   {
+//     id: 'GAMES',
+//     displayText: 'Games',
+//   },
+// ]
 
 class App extends Component {
   state = {
@@ -48,7 +49,7 @@ class App extends Component {
   }
 
   render() {
-    const {activeOption, name} = this.state
+    const {activeOption, name, isTrue} = this.state
 
     return (
       <LanguageContext.Provider
@@ -56,9 +57,9 @@ class App extends Component {
           activeOption,
           changeSelectOption: this.changeSelectOption,
           name,
-          changeName: this.onChangeName,
+          onChangeName: this.onChangeName,
           isTrue,
-          onButton: this.onClickButton,
+          onClickButton: this.onClickButton,
         }}
       >
         <Switch>

@@ -1,11 +1,11 @@
-import React from "react"
+import React from 'react'
 
-const LanguageContext=React.createContext({
-    name:""
-    activeOption:"Arts and Culture"
-    isTrue:false,
-    onButton=()=>{},
-    changeName=()=>{},
-    changeSelectOption=()=>{},
+const LanguageContext = React.createContext({
+  activeOption: 'Arts and Culture',
+  name: '',
+  isTrue: false,
+  changeSelectOption: () => {},
+  onChangeName: () => {},
+  onClickButton: () => {},
 })
 export default LanguageContext

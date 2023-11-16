@@ -1,30 +1,39 @@
 import LanguageContext from '../../Context/languageContext'
 
-const Home = () => (
+const Home = props => (
   <LanguageContext.Consumer>
     {value => {
-      const {name, isTrue, activeOption, onButton} = value
+      const {name, isTrue, activeOption, onClickButton} = value
 
-      const onClickRegisterButton = props => {
-        onButton(true)
+      const onClickRegisterButton = () => {
+        onClickButton(true)
         const {history} = props
         history.push('/register')
       }
 
       return (
         <div>
-          {isTrue ? <h1>Hello {name}</h1> : <h1>Welcome to MeetUp</h1>}
           {isTrue ? (
-            <p>Welcome to {activeOption}</p>
+            <div>
+              <h1>Hello {name}</h1>
+              <p>Welcome to {activeOption}</p>
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
+                alt="meetup"
+              />
+            </div>
           ) : (
-            <p>Please register for the topic</p>
-          )}
-          {isTrue ? (
-            ''
-          ) : (
-            <button type="button" onClick={onClickRegisterButton}>
-              Register
-            </button>
+            <div>
+              <h1>Welcome to Meetup</h1>
+              <p>Please register for the topic</p>
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
+                alt="meetup"
+              />
+              <button type="button" onClick={onClickRegisterButton}>
+                Register
+              </button>
+            </div>
           )}
         </div>
       )
