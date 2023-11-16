@@ -1,5 +1,3 @@
-import './index.css'
-
 const NotFound = () => (
   <div className="not-found-container">
     <img

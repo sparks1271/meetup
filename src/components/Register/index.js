@@ -1,5 +1,4 @@
-import LanguageContext from './Context/languageContext'
-import Header from '../Header'
+import LanguageContext from '../../Context/languageContext'
 
 const topicsList = [
   {
@@ -37,9 +36,9 @@ const Register = () => (
         changeSelectOption(event.target.value)
       }
 
-      onClickRegister = event => {
+      const onClickRegister = event => {
         event.preventDefault()
-        const {history} = props
+        const {history} = this.props
 
         history.push('/')
       }
@@ -54,7 +53,7 @@ const Register = () => (
           </div>
           <div>
             <h1>Let us Join</h1>
-            <form onSubmit={this.onClickRegister}>
+            <form onSubmit={onClickRegister}>
               <label htmlFor="name">NAME</label>
               <input
                 id="name"

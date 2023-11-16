@@ -1,12 +1,11 @@
-import LanguageContext from './Context/languageContext'
-import Header from '../Header'
+import LanguageContext from '../../Context/languageContext'
 
 const Home = () => (
   <LanguageContext.Consumer>
     {value => {
       const {name, isTrue, activeOption, onButton} = value
 
-      onClickRegisterButton = () => {
+      const onClickRegisterButton = props => {
         onButton(true)
         const {history} = props
         history.push('/register')
@@ -23,7 +22,7 @@ const Home = () => (
           {isTrue ? (
             ''
           ) : (
-            <button type="button" onClick={}>
+            <button type="button" onClick={onClickRegisterButton}>
               Register
             </button>
           )}
