@@ -3,7 +3,6 @@ import {Switch, Route} from 'react-router-dom'
 import LanguageContext from './Context/languageContext'
 import Home from './components/Home'
 import Register from './components/Register'
-import Header from './components/Header'
 import NotFound from './components/NotFound'
 
 // const topicsList = [
@@ -63,7 +62,6 @@ class App extends Component {
         }}
       >
         <Switch>
-          <Header />
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
           <Route component={NotFound} />

@@ -1,3 +1,4 @@
+import Header from '../Header'
 import LanguageContext from '../../Context/languageContext'
 
 const topicsList = [
@@ -26,7 +27,7 @@ const topicsList = [
 const Register = props => (
   <LanguageContext.Consumer>
     {value => {
-      const {name, onChangeName, changeSelectOption, activeOption} = value
+      const {name, onChangeName, changeSelectOption, selectOption} = value
 
       const ChangeName = event => {
         onChangeName(event.target.value)
@@ -40,37 +41,45 @@ const Register = props => (
         event.preventDefault()
         const {history} = props
 
-        history.push('/')
+        history.replace('/')
       }
 
       return (
-        <div>
+        <>
+          <Header />
           <div>
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/meetup/website-register-img.png"
-              alt="website register"
-            />
+            <div>
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/meetup/website-register-img.png"
+                alt="website register"
+              />
+            </div>
+            <div>
+              <h1>Let us Join</h1>
+              <form onSubmit={onClickRegister}>
+                <label htmlFor="name">NAME</label>
+                <input
+                  id="name"
+                  type="text"
+                  onChange={ChangeName}
+                  value={name}
+                />
+                <label htmlFor="option">TOPICS</label>
+                <select
+                  id="option"
+                  value={selectOption}
+                  onChange={onChangeOption}
+                >
+                  {topicsList.map(eachItem => (
+                    <option key={eachItem.id}>{eachItem.displayText}</option>
+                  ))}
+                </select>
+                <button type="submit">Register Now</button>
+                {name.length === 0 && <p>Please enter your name</p>}
+              </form>
+            </div>
           </div>
-          <div>
-            <h1>Let us Join</h1>
-            <form onSubmit={onClickRegister}>
-              <label htmlFor="name">NAME</label>
-              <input id="name" type="text" onChange={ChangeName} value={name} />
-              <label htmlFor="option">TOPICS</label>
-              <select
-                id="option"
-                value={activeOption}
-                onChange={onChangeOption}
-              >
-                {topicsList.map(eachItem => (
-                  <option key={eachItem.id}>{eachItem.displayText}</option>
-                ))}
-              </select>
-              <button type="submit">Register</button>
-              {name.length === 0 && <p>Please enter your name</p>}
-            </form>
-          </div>
-        </div>
+        </>
       )
     }}
   </LanguageContext.Consumer>

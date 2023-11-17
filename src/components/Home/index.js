@@ -1,41 +1,46 @@
+import {Link} from 'react-router-dom'
 import LanguageContext from '../../Context/languageContext'
+import Header from '../Header'
 
-const Home = props => (
+const Home = () => (
   <LanguageContext.Consumer>
     {value => {
       const {name, isTrue, activeOption, onClickButton} = value
 
       const onClickRegisterButton = () => {
-        onClickButton(true)
-        const {history} = props
-        history.push('/register')
+        onClickButton(!isTrue)
       }
 
       return (
-        <div>
-          {isTrue ? (
-            <div>
-              <h1>Hello {name}</h1>
-              <p>Welcome to {activeOption}</p>
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
-                alt="meetup"
-              />
-            </div>
-          ) : (
-            <div>
-              <h1>Welcome to Meetup</h1>
-              <p>Please register for the topic</p>
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
-                alt="meetup"
-              />
-              <button type="button" onClick={onClickRegisterButton}>
-                Register
-              </button>
-            </div>
-          )}
-        </div>
+        <>
+          <Header />
+          <div>
+            {isTrue ? (
+              <div>
+                <h1>Hello {name}</h1>
+                <p>Welcome to {activeOption}</p>
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
+                  alt="meetup"
+                />
+              </div>
+            ) : (
+              <div>
+                <h1>Welcome to Meetup</h1>
+                <p>Please register for the topic</p>
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
+                  alt="meetup"
+                />
+                <Link to="/register">
+                  <button type="button" onClick={onClickRegisterButton}>
+                    Register
+                  </button>
+                </Link>
+              </div>
+            )}
+          </div>
+        </>
       )
     }}
   </LanguageContext.Consumer>
