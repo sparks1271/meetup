@@ -33,6 +33,7 @@ class App extends Component {
     name: '',
     activeOption: 'Arts and Culture',
     isTrue: false,
+    error: false,
   }
 
   changeSelectOption = activeOption => {
@@ -47,8 +48,12 @@ class App extends Component {
     this.setState({isTrue})
   }
 
+  errorClick = error => {
+    this.setState({error})
+  }
+
   render() {
-    const {activeOption, name, isTrue} = this.state
+    const {activeOption, name, isTrue, error} = this.state
 
     return (
       <LanguageContext.Provider
@@ -59,6 +64,8 @@ class App extends Component {
           onChangeName: this.onChangeName,
           isTrue,
           onClickButton: this.onClickButton,
+          error,
+          errorClick: this.errorClick,
         }}
       >
         <Switch>

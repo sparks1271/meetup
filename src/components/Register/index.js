@@ -27,7 +27,14 @@ const topicsList = [
 const Register = props => (
   <LanguageContext.Consumer>
     {value => {
-      const {name, onChangeName, changeSelectOption, selectOption} = value
+      const {
+        name,
+        onChangeName,
+        changeSelectOption,
+        selectOption,
+        error,
+        errorClick,
+      } = value
 
       const ChangeName = event => {
         onChangeName(event.target.value)
@@ -40,6 +47,9 @@ const Register = props => (
       const onClickRegister = event => {
         event.preventDefault()
         const {history} = props
+        if (name.length === 0) {
+          errorClick(!error)
+        }
 
         history.replace('/')
       }
@@ -71,11 +81,13 @@ const Register = props => (
                   onChange={onChangeOption}
                 >
                   {topicsList.map(eachItem => (
-                    <option key={eachItem.id}>{eachItem.displayText}</option>
+                    <option key={eachItem.id} value={eachItem.displayText}>
+                      {eachItem.displayText}
+                    </option>
                   ))}
                 </select>
                 <button type="submit">Register Now</button>
-                {name.length === 0 && <p>Please enter your name</p>}
+                {error && <p>Please enter your name</p>}
               </form>
             </div>
           </div>

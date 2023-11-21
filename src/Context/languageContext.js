@@ -8,5 +8,7 @@ const LanguageContext = React.createContext({
   changeSelectOption: () => {},
   onChangeName: () => {},
   onClickButton: () => {},
+  error: false,
+  errorClick: () => {},
 })
 export default LanguageContext
